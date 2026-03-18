@@ -17,6 +17,10 @@
   box-sizing: border-box;
 }
 
+[hidden] {
+  display: none !important;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
@@ -115,6 +119,10 @@ h2 {
   font-size: clamp(1.45rem, 2vw, 2rem);
 }
 
+h3 {
+  font-size: 1.35rem;
+}
+
 .hero__lead {
   max-width: 56ch;
   margin: 18px 0 0;
@@ -145,15 +153,81 @@ h2 {
   font-size: 1.4rem;
 }
 
+.card {
+  padding: 28px;
+  background: var(--surface);
+}
+
+.auth-card {
+  margin-bottom: 24px;
+}
+
+.auth-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.auth-form,
+.auth-user {
+  padding: 22px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.76);
+  border: 1px solid rgba(19, 34, 56, 0.08);
+}
+
+.auth-form {
+  display: grid;
+  gap: 14px;
+}
+
+.field {
+  display: grid;
+  gap: 8px;
+}
+
+.field span {
+  color: var(--muted);
+  font-size: 0.92rem;
+}
+
+.field input {
+  width: 100%;
+  border: 1px solid rgba(19, 34, 56, 0.16);
+  border-radius: 16px;
+  padding: 12px 14px;
+  font: inherit;
+  color: var(--ink);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.field input:focus {
+  outline: 2px solid rgba(11, 143, 119, 0.22);
+  border-color: var(--primary);
+}
+
+.auth-user {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+}
+
+.auth-user__text,
+.files-caption {
+  margin: 10px 0 0;
+  color: var(--muted);
+  line-height: 1.55;
+}
+
 .grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
   gap: 24px;
 }
 
-.card {
-  padding: 28px;
-  background: var(--surface);
+.dashboard--locked .card {
+  opacity: 0.86;
 }
 
 .files-card {
@@ -178,7 +252,7 @@ h2 {
     linear-gradient(180deg, rgba(11, 143, 119, 0.06), rgba(255, 179, 71, 0.08)),
     var(--surface-strong);
   cursor: pointer;
-  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease;
+  transition: transform 160ms ease, border-color 160ms ease, background 160ms ease, opacity 160ms ease;
 }
 
 .dropzone:hover,
@@ -188,6 +262,19 @@ h2 {
   background:
     linear-gradient(180deg, rgba(11, 143, 119, 0.12), rgba(255, 179, 71, 0.12)),
     #fffdf7;
+}
+
+.dropzone--disabled {
+  opacity: 0.62;
+  cursor: not-allowed;
+}
+
+.dropzone--disabled:hover {
+  transform: none;
+  border-color: rgba(11, 143, 119, 0.4);
+  background:
+    linear-gradient(180deg, rgba(11, 143, 119, 0.06), rgba(255, 179, 71, 0.08)),
+    var(--surface-strong);
 }
 
 .dropzone input {
@@ -312,12 +399,18 @@ h2 {
 
 @media (max-width: 900px) {
   .hero,
-  .grid {
+  .grid,
+  .auth-grid {
     grid-template-columns: 1fr;
   }
 
   .hero__panel {
     grid-template-columns: 1fr;
+  }
+
+  .auth-user {
+    flex-direction: column;
+    align-items: stretch;
   }
 }
 

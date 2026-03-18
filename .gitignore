@@ -1,3 +1,5 @@
 node_modules/
 storage/index.json
+storage/users.json
+storage/sessions.json
 storage/files/

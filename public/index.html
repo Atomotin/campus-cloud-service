@@ -13,7 +13,8 @@
           <p class="eyebrow">Учебный облачный сервис</p>
           <h1>Campus Cloud Service</h1>
           <p class="hero__lead">
-            Веб-приложение для загрузки, хранения, скачивания и удаления файлов через браузер.
+            Многопользовательское веб-приложение для загрузки, хранения, скачивания и удаления
+            личных файлов через браузер.
           </p>
         </div>
 
@@ -23,8 +24,8 @@
             <strong class="metric__value">REST</strong>
           </div>
           <div class="metric">
-            <span class="metric__label">Хранение</span>
-            <strong class="metric__value">Локально</strong>
+            <span class="metric__label">Доступ</span>
+            <strong id="hero-user-state" class="metric__value">Гость</strong>
           </div>
           <div class="metric">
             <span class="metric__label">Стек</span>
@@ -33,17 +34,91 @@
         </div>
       </header>
 
-      <main class="grid">
+      <section class="card auth-card">
+        <div class="section-heading">
+          <p class="section-heading__kicker">Аккаунт</p>
+          <h2>Вход и регистрация</h2>
+        </div>
+
+        <div id="auth-guest" class="auth-grid">
+          <form id="login-form" class="auth-form">
+            <h3>Войти</h3>
+
+            <label class="field">
+              <span>Логин</span>
+              <input id="login-username" name="login" type="text" autocomplete="username" required />
+            </label>
+
+            <label class="field">
+              <span>Пароль</span>
+              <input
+                id="login-password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                required
+              />
+            </label>
+
+            <button class="button button--primary" type="submit">Войти</button>
+          </form>
+
+          <form id="register-form" class="auth-form">
+            <h3>Создать аккаунт</h3>
+
+            <label class="field">
+              <span>Логин</span>
+              <input
+                id="register-username"
+                name="login"
+                type="text"
+                autocomplete="username"
+                minlength="3"
+                maxlength="24"
+                required
+              />
+            </label>
+
+            <label class="field">
+              <span>Пароль</span>
+              <input
+                id="register-password"
+                name="password"
+                type="password"
+                autocomplete="new-password"
+                minlength="6"
+                required
+              />
+            </label>
+
+            <button class="button button--ghost" type="submit">Зарегистрироваться</button>
+          </form>
+        </div>
+
+        <div id="auth-user" class="auth-user" hidden>
+          <div>
+            <p class="section-heading__kicker">Текущий пользователь</p>
+            <h2 id="current-user-login">user</h2>
+            <p class="auth-user__text">Ты видишь и редактируешь только свои файлы.</p>
+          </div>
+
+          <button id="logout-button" class="button button--danger" type="button">Выйти</button>
+        </div>
+      </section>
+
+      <main id="dashboard" class="grid dashboard dashboard--locked">
         <section class="card upload-card">
           <div class="section-heading">
             <p class="section-heading__kicker">Загрузка</p>
             <h2>Добавить файл в облако</h2>
           </div>
 
-          <label class="dropzone" for="file-input">
+          <label id="dropzone" class="dropzone" for="file-input">
             <input id="file-input" type="file" />
             <span class="dropzone__title">Выбери файл или перетащи его сюда</span>
-            <span class="dropzone__subtitle">Поддерживается любой формат, лимит до 50 МБ</span>
+            <span class="dropzone__subtitle">
+              Поддерживается любой формат, лимит до 50 МБ. Файл увидишь только ты.
+            </span>
           </label>
 
           <div class="upload-actions">
@@ -52,19 +127,23 @@
           </div>
 
           <p id="status-message" class="status-message" aria-live="polite">
-            Сервис готов к работе.
+            Войди в аккаунт, чтобы работать с личным облаком.
           </p>
         </section>
 
         <section class="card stats-card">
           <div class="section-heading">
             <p class="section-heading__kicker">Состояние</p>
-            <h2>Статистика хранилища</h2>
+            <h2>Статистика профиля</h2>
           </div>
 
           <div class="stats">
             <article class="stat-box">
-              <span>Файлов</span>
+              <span>Пользователь</span>
+              <strong id="user-state-stat">Гость</strong>
+            </article>
+            <article class="stat-box">
+              <span>Моих файлов</span>
               <strong id="files-count">0</strong>
             </article>
             <article class="stat-box">
@@ -77,7 +156,10 @@
         <section class="card files-card">
           <div class="section-heading">
             <p class="section-heading__kicker">Хранилище</p>
-            <h2>Список файлов</h2>
+            <h2>Мои файлы</h2>
+            <p id="files-caption" class="files-caption">
+              Войди в аккаунт, чтобы увидеть своё личное облачное хранилище.
+            </p>
           </div>
 
           <div id="files-list" class="files-list"></div>
