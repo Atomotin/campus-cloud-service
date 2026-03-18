@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Campus Cloud Service</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <div class="hero__text">
+          <p class="eyebrow">Учебный облачный сервис</p>
+          <h1>Campus Cloud Service</h1>
+          <p class="hero__lead">
+            Веб-приложение для загрузки, хранения, скачивания и удаления файлов через браузер.
+          </p>
+        </div>
+
+        <div class="hero__panel">
+          <div class="metric">
+            <span class="metric__label">API</span>
+            <strong class="metric__value">REST</strong>
+          </div>
+          <div class="metric">
+            <span class="metric__label">Хранение</span>
+            <strong class="metric__value">Локально</strong>
+          </div>
+          <div class="metric">
+            <span class="metric__label">Стек</span>
+            <strong class="metric__value">Node.js</strong>
+          </div>
+        </div>
+      </header>
+
+      <main class="grid">
+        <section class="card upload-card">
+          <div class="section-heading">
+            <p class="section-heading__kicker">Загрузка</p>
+            <h2>Добавить файл в облако</h2>
+          </div>
+
+          <label class="dropzone" for="file-input">
+            <input id="file-input" type="file" />
+            <span class="dropzone__title">Выбери файл или перетащи его сюда</span>
+            <span class="dropzone__subtitle">Поддерживается любой формат, лимит до 50 МБ</span>
+          </label>
+
+          <div class="upload-actions">
+            <button id="upload-button" class="button button--primary" type="button">Загрузить</button>
+            <button id="refresh-button" class="button button--ghost" type="button">Обновить список</button>
+          </div>
+
+          <p id="status-message" class="status-message" aria-live="polite">
+            Сервис готов к работе.
+          </p>
+        </section>
+
+        <section class="card stats-card">
+          <div class="section-heading">
+            <p class="section-heading__kicker">Состояние</p>
+            <h2>Статистика хранилища</h2>
+          </div>
+
+          <div class="stats">
+            <article class="stat-box">
+              <span>Файлов</span>
+              <strong id="files-count">0</strong>
+            </article>
+            <article class="stat-box">
+              <span>Общий объём</span>
+              <strong id="files-size">0 Б</strong>
+            </article>
+          </div>
+        </section>
+
+        <section class="card files-card">
+          <div class="section-heading">
+            <p class="section-heading__kicker">Хранилище</p>
+            <h2>Список файлов</h2>
+          </div>
+
+          <div id="files-list" class="files-list"></div>
+        </section>
+      </main>
+    </div>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

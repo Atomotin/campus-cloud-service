@@ -1,0 +1,17 @@
+{
+  "name": "campus-cloud-service",
+  "version": "1.0.0",
+  "description": "Учебный облачный сервис хранения файлов на Node.js без внешних зависимостей",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "keywords": [
+    "cloud",
+    "storage",
+    "nodejs",
+    "university-project"
+  ],
+  "author": "",
+  "license": "MIT"
+}
